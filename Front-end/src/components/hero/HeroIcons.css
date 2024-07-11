@@ -1,0 +1,23 @@
+.icons-row {
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+  background: inherit;
+  padding-top: 2rem;
+
+  flex-wrap: wrap;
+}
+.only-icons {
+  display: flex;
+
+  width: 250px;
+  gap: 1.3rem;
+  flex-grow: 1;
+  border-right: 1px solid #363636;
+  line-height: 25px;
+}
+.only-icons h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+}

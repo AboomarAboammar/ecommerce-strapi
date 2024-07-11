@@ -1,0 +1,123 @@
+.header-one {
+  display: flex;
+  background: "green";
+  justify-content: space-between;
+}
+.hot {
+  padding: "3px 10px";
+  border-radius: 12px;
+  background-color: #d23f57;
+  width: 50px;
+  text-align: center;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* middle header*/
+
+[type="search"] {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.header-mid-left {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.header-mid-left-brand {
+  color: inherit !important;
+  text-transform: uppercase;
+  font-size: 14px !important;
+}
+.header-mid-center {
+  flex-grow: 0.6;
+  margin-left: 1rem;
+}
+
+.search-form {
+  width: 100%;
+  align-items: center;
+}
+
+.search-input-container {
+  position: relative;
+  flex-grow: 0.8;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-align: center;
+}
+.search-input::placeholder {
+  text-align: right;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #968b8b;
+}
+
+.category-dropdown {
+  color: inherit !important;
+  border: none !important;
+  background: none !important;
+}
+/*
+header bottom 
+*/
+
+.dropdown-container {
+  position: relative;
+}
+.header-menu-bigscreen {
+  border: none !important;
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+.dropdown-item {
+  position: relative;
+}
+
+.dropdown-item .product-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+
+  z-index: 999;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+}
+
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-container .dropdown-item:hover .product-menu {
+  display: block;
+  top: 5px;
+  left: 0px;
+  font-size: 14px;
+  padding: 3px;
+  transform: translate(70%);
+  -webkit-transform: translate(70%);
+  -moz-transform: translate(70%);
+  -ms-transform: translate(70%);
+  -o-transform: translate(70%);
+}

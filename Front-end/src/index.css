@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap");
+* {
+  font-family: "Open Sans", sans-serif;
+}
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: inherit;
+}
+
+.borderrr {
+  border: 1px solid red;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+/* Ensure buttons and other elements are styled accordingly */
+.light .accordion-button,
+.light .list-group-item {
+  background-color: #f8f3f3;
+  color: black;
+  border: none;
+}
+
+.dark .accordion-button,
+.dark .list-group-item {
+  background-color: #1b1919;
+  color: white;
+  border: none;
+}
+
+.light .offcanvas-header {
+  background-color: #f8f3f3;
+  color: black;
+}
+
+.dark .offcanvas-header {
+  background-color: #1b1919;
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: #2b3445;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  text-transform: lowercase;
+}
+a:hover {
+  color: #d23f57;
+}
+/* Scroll*/
+
+::-webkit-scrollbar {
+  width: 10px;  
+  height: 8px; 
+}
+
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.modal-header .btn-close {
+  background-color: red;
+  border: none;
+  opacity: 1;
+}
+
+.modal-header .btn-close:hover{
+  color:red !important;
+  scale: 1.1;
+  rotate: 360deg;
+  transition: 0.8s;
+  -webkit-transition: 0.8s;
+  -moz-transition: 0.8s;
+  -ms-transition: 0.8s;
+  -o-transition: 0.8s;
+}
