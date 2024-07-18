@@ -6,27 +6,37 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import MyVerticallyCenteredModal from "./Modal/Modal";
+import ProductDetails from "./Modal/ProductDetails";
 import { FaShoppingCart } from "react-icons/fa";
 import "./main.css";
 import StarRating from "./Rating";
 import { useGetproductByNameQuery } from "../../redux/product";
+import Loading from "./loading/Loading";
+import ErrorPage from "./Erorr/Erorr.js";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Main = () => {
   const [radioValue, setRadioValue] = useState("1");
   const [modalShow, setModalShow] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
+  const [productsellected, setproductSellected] = useState({});
 
-  const { data, error, isLoading } = useGetproductByNameQuery("products?populate=*");
+  const { data, error, isLoading } = useGetproductByNameQuery(
+    "products?populate=*"
+  );
 
   useEffect(() => {
     if (data) {
       if (radioValue === "1") {
         setFilteredData(data.data);
       } else if (radioValue === "2") {
-        setFilteredData(data.data.filter(item => item.attributes.category === "men"));
+        setFilteredData(
+          data.data.filter((item) => item.attributes.category === "men")
+        );
       } else if (radioValue === "3") {
-        setFilteredData(data.data.filter(item => item.attributes.category === "women"));
+        setFilteredData(
+          data.data.filter((item) => item.attributes.category === "women")
+        );
       }
     }
   }, [radioValue, data]);
@@ -36,9 +46,6 @@ const Main = () => {
     { name: "Men Category", value: "2" },
     { name: "Women Category", value: "3" },
   ];
-
-  console.log('Data:', data?.data);
-  console.log('Base URL:', process.env.REACT_APP_BASE_URL);
 
   return (
     <Container style={{ marginTop: "20px" }}>
@@ -68,15 +75,24 @@ const Main = () => {
         </div>
       </div>
       <div className="main-card">
-        {isLoading
-          ? "Loading..."
-          : error
-          ? "Error loading data"
-          : filteredData.map((item, key) => (
-              <Card
-                key={key}
-                style={{ width: "19rem", marginBottom: "1rem" }}
-              >
+        {isLoading ? (
+          <Loading />
+        ) : error ? (
+          <ErrorPage />
+        ) : (
+          filteredData.map((item, key) => (
+            <AnimatePresence>
+
+           
+            <motion.div
+              key={key}
+              style={{ width: "19rem", marginBottom: "1rem" }}
+              layout
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.2,type:"spring",stiffness:50}}
+            >
+              <Card>
                 <div className="card-img">
                   <Card.Img
                     variant="center"
@@ -94,18 +110,27 @@ const Main = () => {
                   {item.attributes.productDescription}
                 </div>
                 <div className="card-details">
-                  <Button onClick={() => setModalShow(true)}>
+                  <Button
+                    onClick={() => {
+                      setModalShow(true);
+                      setproductSellected(item);
+                    }}
+                  >
                     <FaShoppingCart size={17} style={{ marginRight: "10px" }} />
                     Buy Now
                   </Button>
-                  <MyVerticallyCenteredModal
+                  <ProductDetails
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+                    item={productsellected}
                   />
                   <StarRating value={item.attributes.productRating} />
                 </div>
               </Card>
-            ))}
+            </motion.div>
+            </AnimatePresence>
+          ))
+        )}
       </div>
     </Container>
   );
